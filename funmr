@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Dress-Up Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .game-container {
+            display: flex;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            gap: 50px;
+        }
+
+        /* Character Display Area */
+        .character-window {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 220px;
+            height: 320px;
+            border: 3px dashed #cbd5e1;
+            border-radius: 12px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .layer {
+            position: absolute;
+            font-size: 3.5rem;
+            transition: all 0.2s ease;
+        }
+
+        /* Layer positioning to stack items correctly */
+        #hat-layer { top: 35px; z-index: 3; }
+        #glasses-layer { top: 85px; z-index: 2; }
+        #shirt-layer { top: 145px; z-index: 1; }
+        #model-layer { top: 80px; font-size: 6rem; z-index: 0; }
+        
+        /* Wardrobe/Menu Area */
+        .wardrobe {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .category-title {
+            margin: 0 0 8px 0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+
+        .options-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            font-size: 1.8rem;
+            padding: 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            border-color: #94a3b8;
+            background: #f1f5f9;
+        }
+
+        button.clear-btn {
+            font-size: 1rem;
+            color: #ef4444;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✨ Style Studio ✨</h1>
+
+    <div class="game-container">
+        <div class="character-window">
+            <div id="hat-layer" class="layer"></div>
+            <div id="glasses-layer" class="layer"></div>
+            <div id="model-layer">🧍</div>
+            <div id="shirt-layer" class="layer"></div>
+        </div>
+
+        <div class="wardrobe">
+            <div>
+                <p class="category-title">Hats</p>
+                <div class="options-row">
+                    <button onclick="changeItem('hat-layer', '🎩')">🎩</button>
+                    <button onclick="changeItem('hat-layer', '👑')">👑</button>
+                    <button onclick="changeItem('hat-layer', '🧢')">🧢</button>
+                    <button class="clear-btn" onclick="changeItem('hat-layer', '')">✕</button>
+                </div>
+            </div>
+            
+            <div>
+                <p class="category-title">Accessories</p>
+                <div class="options-row">
+                    <button onclick="changeItem('glasses-layer', '🕶️')">🕶️</button>
+                    <button onclick="changeItem('glasses-layer', '🤓')">🤓</button>
+                    <button onclick="changeItem('glasses-layer', '🎨')">🎨</button>
+                    <button class="clear-btn" onclick="changeItem('glasses-layer', '')">✕</button>
+                </div>
+            </div>
+
+            <div>
+                <p class="category-title">Tops</p>
+                <div class="options-row">
+                    <button onclick="changeItem('shirt-layer', '👕')">👕</button>
+                    <button onclick="changeItem('shirt-layer', '🧥')">🧥</button>
+                    <button onclick="changeItem('shirt-layer', '👗')">👗</button>
+                    <button class="clear-btn" onclick="changeItem('shirt-layer', '')">✕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple function to swap the emoji on the character model
+        function changeItem(layerId, emoji) {
+            document.getElementById(layerId).innerText = emoji;
+        }
+    </script>
+
+</body>
+</html>
